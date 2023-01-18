@@ -1,8 +1,8 @@
-<div class="modal fade" id="" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId-{{$project->id}}" aria-hidden="true">
+<div class="modal fade" id="delete-{{ $product->id }}" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId-{{$product->id}}" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="delete-{{  }}">Stai per eliminare <strong>definitivamente</strong> un dato</h1>
+                <h1 class="modal-title fs-5" id="delete-{{ $product->id  }}">Stai per eliminare <strong>definitivamente</strong> un dato</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -10,7 +10,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <form action="{{ route ('admin.project.destroy', $project->id )}}" method="post">
+                <form action="{{ route ('admin.products.destroy', $product->id )}}" method="post">
                     @csrf
 
                     @method ('delete')

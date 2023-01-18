@@ -28,7 +28,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.create');
     }
 
     /**
@@ -39,7 +39,11 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        $val_data = $request->validated();
+
+        $product = Product::create($val_data);
+
+        return to_route('admin.products.index')->with('message', "Product $product->id added successfully");
     }
 
     /**
@@ -50,7 +54,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('admin.show', compact('product'));
     }
 
     /**
@@ -61,7 +65,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.edit', compact('product'));
     }
 
     /**
@@ -73,7 +77,12 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $val_data = $request->validated();
+
+
+        $product->update($val_data);
+
+        return to_route('admin.products.index')->with('message', "Product $product->id updated successfully");
     }
 
     /**
@@ -84,6 +93,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return to_route('admin.products.index')->with('message', "Product $product->id deleted successfully");
     }
 }
