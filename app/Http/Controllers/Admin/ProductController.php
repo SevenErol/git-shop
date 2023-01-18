@@ -87,6 +87,15 @@ class ProductController extends Controller
     {
         $val_data = $request->validated();
 
+        if ($request->hasFile('cover_image')) {
+
+            if ($product->cover_image) {
+                Storage::delete($product->cover_image);
+            }
+
+            $cover_image = Storage::put('uploads', $val_data['cover_image']);
+            $val_data['cover_image'] = $cover_image;
+        }
 
         $product->update($val_data);
 
@@ -101,6 +110,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        if ($product->cover_image) {
+            Storage::delete($product->cover_image);
+        }
+
         $product->delete();
 
         return to_route('admin.products.index')->with('message', "Product $product->id deleted successfully");
