@@ -24,6 +24,7 @@ class StoreProductRequest extends FormRequest
     public function rules()
     {
         return [
+            'cover_image' => 'nullable|image|max:250',
             'title' => 'required|unique:products,title|min:5|max:50',
             'description' => 'nullable',
             'data' => 'nullable'
