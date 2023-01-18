@@ -21,6 +21,7 @@ class ProductSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             $product = new Product();
             $product->title = $faker->sentence(3);
+            $product->cover_image = 'placeholders/' . $faker->image('storage/app/public/placeholders', 600, 300, 'Product', false, false);
             $product->description = $faker->text();
             $product->date = $faker->date();
             $product->save();
