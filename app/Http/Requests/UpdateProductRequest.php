@@ -26,6 +26,8 @@ class UpdateProductRequest extends FormRequest
     public function rules()
     {
         return [
+
+            'cover_image' => ['nullable', 'image', 'max:250'],
             'title' => ['required', Rule::unique('products')->ignore($this->product->id), 'min:5', 'max:50'],
             'description' => 'nullable',
             'data' => 'nullable'
