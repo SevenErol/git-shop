@@ -28,7 +28,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.create');
     }
 
     /**
@@ -39,7 +39,11 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        $val_data = $request->validated();
+
+        $product = Product::create($val_data);
+
+        return to_route('admin.products.index')->with('message', "Product $product->id added successfully");
     }
 
     /**
