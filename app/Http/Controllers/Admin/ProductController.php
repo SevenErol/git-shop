@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -17,6 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+        // TODO recuperare i prodotti ordinati per id
         $products = Product::all();
 
         return view('admin.index', compact('products'));
@@ -29,7 +31,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        $categories = Category::all();
+        return view('admin.create', compact('categories'));
     }
 
     /**
