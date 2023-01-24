@@ -33,6 +33,18 @@
             @enderror
 
             <div class="mb-3">
+                <label for="category_id" class="form-label">Categories</label>
+                <select class="form-select form-select" name="category_id" id="category_id">
+                    <option selected>Select one</option>
+
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" {{ old('category_id') ? 'selected' : '' }}>{{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mb-3">
                 <label for="description">Data description</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" placeholder="Leave a description"
                     id="description" name="description" style="height: 150px">{{ old('description') }}</textarea>
