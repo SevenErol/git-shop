@@ -31,9 +31,9 @@
             @error('cover_image')
                 <small id="cover_imageHlper" class="text-danger">{{ $message }}</small>
             @enderror
-            {{-- TODO cambia nome in categories --}}
+
             <div class="mb-3">
-                <label for="category_id" class="form-label">Category</label>
+                <label for="category_id" class="form-label">Categories</label>
                 <select class="form-select form-select" name="category_id" id="category_id">
                     <option selected>Select one</option>
 

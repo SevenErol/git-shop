@@ -31,6 +31,23 @@
             </div>
 
             <div class="mb-3">
+                <label for="category_id" class="form-label">Change the product's category</label>
+                <select class="form-select @error('category_id') 'is-invalid' @enderror" name="category_id"
+                    id="category_id">
+                    <option selected>Select one</option>
+
+                    @forelse ($categories as $category)
+                        <option value="{{ $category->id }}"
+                            {{ $category->id == old('category_id', $product->category ? $product->category->id : '') ? 'selected' : '' }}>
+                            {{ $category->name }}
+                        </option>
+                    @empty
+                        <option value="">Sorry, no categories in the system.</option>
+                    @endforelse
+                </select>
+            </div>
+
+            <div class="mb-3">
                 <label for="description">Data description</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" placeholder="Leave a description"
                     id="description" name="description" style="height: 150px">{{ $product->description }}</textarea>
