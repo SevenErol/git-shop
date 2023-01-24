@@ -18,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // recuperare prodotti ordinandoli per id
+        // TODO recuperare i prodotti ordinati per id
         $products = Product::all();
 
         return view('admin.index', compact('products'));
