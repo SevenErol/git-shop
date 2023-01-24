@@ -31,6 +31,18 @@
             @error('cover_image')
                 <small id="cover_imageHlper" class="text-danger">{{ $message }}</small>
             @enderror
+            {{-- TODO cambia nome in categories --}}
+            <div class="mb-3">
+                <label for="category_id" class="form-label">Category</label>
+                <select class="form-select form-select" name="category_id" id="category_id">
+                    <option selected>Select one</option>
+
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" {{ old('category_id') ? 'selected' : '' }}>{{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
 
             <div class="mb-3">
                 <label for="description">Data description</label>
