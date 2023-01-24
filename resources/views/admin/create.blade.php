@@ -33,7 +33,7 @@
             @enderror
 
             <div class="mb-3">
-                <label for="category_id" class="form-label">Categories</label>
+                <label for="category_id" class="form-label">Category</label>
                 <select class="form-select form-select" name="category_id" id="category_id">
                     <option selected>Select one</option>
 
